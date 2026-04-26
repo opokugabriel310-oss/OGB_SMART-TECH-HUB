@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Tech Hub</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#00ffcc">
+<style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 10px;
+  background: #000;
+  color: #00ffcc;
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  color: #00ffcc;
+}
+
+a {
+  color: #00ffcc;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+</style>
+  <style>
+body {
+    background-color: #000;
+    color: #00ffcc;
+    font-family: monospace;
+    padding: 15px;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+h1 {
+    font-size: 28px;
+    text-shadow: 0 0 10px #00ffcc;
+}
+
+h2 {
+    font-size: 22px;
+    color: #ffaa00;
+}
+
+h3 {
+    font-size: 20px;
+    color: #ffaa00;
+}
+
+nav a {
+    color: #00ffcc;
+    text-decoration: none;
+    margin: 5px;
+    font-size: 18px;
+}
+
+a {
+    color: #ffaa00;
+    text-decoration: none;
+}
+nav {
+    border-bottom: 1px solid #00ffcc;
+    padding-bottom: 5px;
+}
+</style>
+
+</head>
+<body>
+
+<nav>
+    <a href="index.html">Home</a> |
+    <a href="about.html">About</a> |
+    <a href="contact.html">Contact</a>|
+    <a href="apps.html">Apps</a> |
+    <a href="money.html">Money</a> |
+    <a href="gaming.html">Gaming</a>|
+    <a href="help.html">Help</a>
+</nav>
+<h1>💻 Smart Tech Hub</h1>
+<p>Your number one place for tech tips, apps and ways to make money online in Ghana.</p>
+
+<p>⚡ Optimized for fast loading – works smoothly on all phones.</p>
+
+<hr><hr>
+
+<h2>🤖 AI Assistant</h2>
+
+<p>Need help finding apps, making money online, or learning tech? Ask the AI assistant.</p>
+<p>⚡ Our AI assistant will guide you instantly when you click.</p>
+<a href="https://chat.openai.com">💬 Talk to AI Assistant</a>
+<p>Initializing Smart Tech Hub...</p>
+<p>🚀 Want to discover powerful apps, make money online, and level up your phone?</p>
+<p>👉 You’re in the right place. Start exploring below 👇</p>
+<br><br>
+<hr>
+<h2>📰 Daily Tech Updates</h2>
+
+<p>We explore apps, gaming tips, and simple online earning methods every day for mobile users in Ghana and beyond.</p>
+
+<h3>📱 Today’s Highlight</h3>
+<p>Smartphones are powerful tools — if you know how to use them, they can become a skill and income machine.</p>
+<h2>Latest Posts</h2>
+
+<h3><a href="apps.html">Best Apps for Android 2026</a></h3>
+<p>Top apps you need right now in Ghana.</p>
+
+<h3><a href="money.html">⚡ 5 Ways to Make Money with Your Phone (Ghana)</a></h3>
+<p>Simple ways to earn using your phone.</p>
+
+<h3><a href="gaming.html">Top Gaming Tips for Blood Strike</a></h3>
+<p>Boost your gameplay like a pro.</p>
+<hr>
+<br><br>
+<h3>🔥 Why This Site?</h3>
+<p>This site is built to help you discover useful apps, improve your skills, and learn how to make money online using just your phone.</p>
+<p>🔥 New posts every day – Stay updated!</p>
+<hr>
+<p>🔔 Bookmark this site and check back daily for new updates!</p>
+<button onclick="toggleChat()" style="position:fixed; bottom:20px; right:20px;">💬</button>
+
+<div id="chatbox" style="display:none; position:fixed; bottom:60px; right:20px; width:260px; background:#000; color:#00ffcc; border:1px solid #00ffcc; padding:10px;">
+  
+  <p><b>🤖 Smart AI</b></p>
+  
+  <div id="chat-area" style="height:150px; overflow-y:auto; font-size:14px;">
+    <p><b>AI:</b> Hi 👋 How can I help you?</p>
+  </div>
+
+  <input id="userInput" type="text" placeholder="Type here..." style="width:70%;">
+  <button onclick="sendMessage()">Send</button>
+</div>
+
+<script>
+function toggleChat() {
+  var box = document.getElementById("chatbox");
+  box.style.display = box.style.display === "none" ? "block" : "none";
+}
+
+function sendMessage() {
+  var input = document.getElementById("userInput");
+  var message = input.value.toLowerCase();
+  var chat = document.getElementById("chat-area");
+
+  if (message === "") return;
+
+  chat.innerHTML += "<p><b>You:</b> " + message + "</p>";
+
+  let reply = "Sorry, I don't understand that yet.";
+
+  if (message.includes("money")) {
+    reply = "💰 You can learn how to make money on the money page!";
+  } else if (message.includes("app")) {
+    reply = "📱 Check the apps page for useful apps!";
+  } else if (message.includes("game")) {
+    reply = "🎮 Visit the gaming page for tips and tricks!";
+  } else if (message.includes("help")) {
+    reply = "💼 Click the Help page and chat with me directly on WhatsApp!";
+  }else if (message.includes("website")) {
+  reply = "💻 I can help you build a website. Click Help!";
+}
+
+  setTimeout(() => {
+    chat.innerHTML += "<p><b>AI:</b> " + reply + "</p>";
+    chat.scrollTop = chat.scrollHeight;
+  }, 500);
+
+  input.value = "";
+}
+</script>
+<hr>
+<br><br>
+<h3>💬 Need Help Getting Started?</h3>
+
+<p>I can guide you step-by-step to start earning with your phone.</p>
+
+<a href="help.html">🔥 Get Help Now</a>
+<hr>
+<p>© 2026 Smart Tech Hub | Built with a phone 📱</p>
+
+</body>
+</html>
