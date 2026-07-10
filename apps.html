@@ -1,150 +1,230 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Best Apps</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Best Android apps for productivity, gaming, learning, and making money online in Ghana.">
+    <meta name="theme-color" content="#00ffcc">
+    <title>Best Apps - Smart Tech Hub</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="styles.css">
+    
     <style>
-.app-card {
-  border: 1px solid #00ffcc;
-  padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 10px;
-}
+        .app-category {
+            margin-bottom: 40px;
+        }
 
-.app-card img {
-  width: 50px;
-  height: 50px;
-}
+        .app-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
 
-.app-card a {
-  display: inline-block;
-  margin-top: 5px;
-  padding: 5px 10px;
-  background: #00ffcc;
-  color: black;
-  text-decoration: none;
-  border-radius: 5px;
-}
-</style>
+        .app-card {
+            background: #111;
+            border: 1px solid #00ffcc;
+            padding: 20px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
 
-<style>
-body {
-    background-color: #000;
-    color: #00ffcc;
-    font-family: monospace;
-    padding: 15px;
-    font-size: 18px;
-    line-height: 1.6;
-}
+        .app-card:hover {
+            border-color: #ffaa00;
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 255, 204, 0.2);
+        }
 
-h1 {
-    font-size: 28px;
-    text-shadow: 0 0 10px #00ffcc;
-}
+        .app-icon {
+            font-size: 48px;
+            margin-bottom: 12px;
+        }
 
-h2 {
-    font-size: 22px;
-    color: #ffaa00;
-}
+        .app-name {
+            font-size: 18px;
+            color: #00ffcc;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
 
-h3 {
-    font-size: 20px;
-    color: #ffaa00;
-}
+        .app-desc {
+            color: #ffaa00;
+            font-size: 14px;
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
 
-nav a {
-    color: #00ffcc;
-    text-decoration: none;
-    margin: 5px;
-    font-size: 18px;
-}
+        .app-button {
+            display: inline-block;
+            padding: 10px 15px;
+            background: #00ffcc;
+            color: #000;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
 
-a {
-    color: #ffaa00;
-    text-decoration: none;
-}
-</style>
+        .app-button:hover,
+        .app-button:focus {
+            background-color: #ffaa00;
+            outline: 2px solid #00ffcc;
+        }
 
+        @media (max-width: 768px) {
+            .app-cards-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
+    <nav role="navigation" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="apps.html" aria-current="page">Apps</a>
+        <a href="money.html">Money</a>
+        <a href="gaming.html">Gaming</a>
+        <a href="help.html">Help</a>
+    </nav>
 
-<nav>
-    <a href="index.html">Home</a> |
-    <a href="about.html">About</a> |
-    <a href="contact.html">Contact</a>|
-    <a href="apps.html">Apps</a> |
-    <a href="money.html">Money</a> |
-    <a href="gaming.html">Gaming</a>
-</nav> 
+    <main role="main">
+        <h1>📱 Best Apps for Android 2026</h1>
+        <p>Discover essential apps to boost productivity, learn new skills, and start earning money online in Ghana.</p>
 
-<h1>Best Apps for Android 🔥</h1>
-<h1>Best Apps for Students in Ghana (2026) 🔥</h1>
+        <!-- Productivity Apps -->
+        <section class="app-category" aria-labelledby="productivity-heading">
+            <h2 id="productivity-heading">⚙️ Productivity & Design Apps</h2>
+            <p>Apps that help you create content and boost your phone's performance.</p>
+            <div class="app-cards-grid" role="list">
+                <div class="app-card" role="listitem">
+                    <div class="app-icon">🎨</div>
+                    <div class="app-name">Canva</div>
+                    <p class="app-desc">Design posters, graphics, and social media content. You can also freelance and make money by designing for others.</p>
+                    <a href="https://play.google.com/store/apps/details?id=com.canva.editor" class="app-button" target="_blank" rel="noopener noreferrer">📥 Download</a>
+                </div>
 
-<p>If you’re a student in Ghana, these apps will help you study smarter, save data, and even make money online.</p>
+                <div class="app-card" role="listitem">
+                    <div class="app-icon">🎬</div>
+                    <div class="app-name">CapCut</div>
+                    <p class="app-desc">Edit videos professionally for TikTok, YouTube, and Instagram. Many people earn money from content creation using this app.</p>
+                    <a href="https://play.google.com/store/apps/details?id=com.capcut.videoed" class="app-button" target="_blank" rel="noopener noreferrer">📥 Download</a>
+                </div>
 
-<h2>1. Canva</h2>
-<p>Canva helps you design posters, assignments, and even social media content. You can also use it to make money by designing for others.</p>
+                <div class="app-card" role="listitem">
+                    <div class="app-icon">✏️</div>
+                    <div class="app-name">Google Docs</div>
+                    <p class="app-desc">Create, edit, and share documents online. Perfect for students and anyone working remotely.</p>
+                    <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.docs.editors.docs" class="app-button" target="_blank" rel="noopener noreferrer">📥 Download</a>
+                </div>
+            </div>
+        </section>
 
-<h2>2. CapCut</h2>
-<p>CapCut is perfect for editing videos for TikTok or YouTube. Many people are making money from content creation using this app.</p>
+        <!-- Browser & Data Saving -->
+        <section class="app-category" aria-labelledby="browser-heading">
+            <h2 id="browser-heading">🌐 Browsers & Data Savers</h2>
+            <p>Save mobile data while browsing the internet—very useful for Ghanaian users.</p>
+            <div class="app-cards-grid" role="list">
+                <div class="app-card" role="listitem">
+                    <div class="app-icon">⚡</div>
+                    <div class="app-name">Opera Mini</div>
+                    <p class="app-desc">Browse the web while saving up to 90% of your data. Perfect for limited internet plans.</p>
+                    <a href="https://play.google.com/store/apps/details?id=com.opera.mini.native" class="app-button" target="_blank" rel="noopener noreferrer">📥 Download</a>
+                </div>
 
-<h2>3. Opera Mini</h2>
-<p>This browser helps you save mobile data while browsing, which is very useful in Ghana.</p>
+                <div class="app-card" role="listitem">
+                    <div class="app-icon">🔵</div>
+                    <div class="app-name">UC Browser</div>
+                    <p class="app-desc">Fast browser with excellent data compression and offline reading capabilities.</p>
+                    <a href="https://play.google.com/store/apps/details?id=com.UCMobile.intl" class="app-button" target="_blank" rel="noopener noreferrer">📥 Download</a>
+                </div>
 
-<h2>Conclusion</h2>
-<p>These apps are powerful tools for students who want to learn and earn using their phones.</p>
-<h1>📱 App Hub</h1>
+                <div class="app-card" role="listitem">
+                    <div class="app-icon">🌍</div>
+                    <div class="app-name">Firefox</div>
+                    <p class="app-desc">Privacy-focused browser with great performance and customization options.</p>
+                    <a href="https://play.google.com/store/apps/details?id=org.mozilla.firefox" class="app-button" target="_blank" rel="noopener noreferrer">📥 Download</a>
+                </div>
+            </div>
+        </section>
 
-<p>Discover useful apps to boost your phone performance and productivity.</p>
+        <!-- Learning Apps -->
+        <section class="app-category" aria-labelledby="learning-heading">
+            <h2 id="learning-heading">🧠 Learning & Skill Development</h2>
+            <p>Learn coding, languages, and valuable skills directly from your phone.</p>
+            <div class="app-cards-grid" role="list">
+                <div class="app-card" role="listitem">
+                    <div class="app-icon">💻</div>
+                    <div class="app-name">SoloLearn</div>
+                    <p class="app-desc">Learn programming languages like Python, JavaScript, and HTML through interactive lessons.</p>
+                    <a href="https://play.google.com/store/apps/details?id=com.sololearn.sololearn" class="app-button" target="_blank" rel="noopener noreferrer">📥 Download</a>
+                </div>
 
-<hr>
-<br><br>
-<h2>⚙️ Phone Booster Apps</h2>
-<div class="app-card">
-  <img src="https://via.placeholder.com/50" alt="app icon">
-  
-  <h3>🚀 Game Booster</h3>
-  <p>Boost your phone performance for smoother gameplay.</p>
-  
-  <a href="https://play.google.com/store/search?q=game%20booster&c=apps" target="_blank">
-    📥 Find Apps
-  </a>
-</div>
+                <div class="app-card" role="listitem">
+                    <div class="app-icon">🌐</div>
+                    <div class="app-name">Duolingo</div>
+                    <p class="app-desc">Learn languages like English, Spanish, and French in fun, bite-sized lessons.</p>
+                    <a href="https://play.google.com/store/apps/details?id=com.duolingo" class="app-button" target="_blank" rel="noopener noreferrer">📥 Download</a>
+                </div>
 
+                <div class="app-card" role="listitem">
+                    <div class="app-icon">📚</div>
+                    <div class="app-name">Khan Academy</div>
+                    <p class="app-desc">Free educational videos on math, science, history, and more. Great for students.</p>
+                    <a href="https://play.google.com/store/apps/details?id=org.khanacademy.android" class="app-button" target="_blank" rel="noopener noreferrer">📥 Download</a>
+                </div>
+            </div>
+        </section>
 
-<hr>
-<br><br>
-<h2>💰 Money Apps</h2>
-<div class="app-card">
-  <img src="https://via.placeholder.com/50" alt="app icon">
-  
-  <h3>💸 Money Apps</h3>
-  <p>Find apps that can help you earn money using your phone.</p>
-  
-  <a href="https://play.google.com/store/search?q=earn%20money%20apps&c=apps" target="_blank">
-    📥 Find Apps
-  </a>
-</div>
+        <!-- Money Making Apps -->
+        <section class="app-category" aria-labelledby="money-heading">
+            <h2 id="money-heading">💰 Money Making Apps</h2>
+            <p>Find legitimate apps to earn money using your phone.</p>
+            <div class="app-cards-grid" role="list">
+                <div class="app-card" role="listitem">
+                    <div class="app-icon">🛒</div>
+                    <div class="app-name">Fiverr</div>
+                    <p class="app-desc">Offer freelance services like design, writing, or virtual assistance to earn money.</p>
+                    <a href="https://play.google.com/store/apps/details?id=com.fiverrdev.pro" class="app-button" target="_blank" rel="noopener noreferrer">📥 Download</a>
+                </div>
 
+                <div class="app-card" role="listitem">
+                    <div class="app-icon">📝</div>
+                    <div class="app-name">Swagbucks</div>
+                    <p class="app-desc">Earn cash and gift cards by completing surveys, watching videos, and shopping online.</p>
+                    <a href="https://play.google.com/store/apps/details?id=com.swagbucks.android" class="app-button" target="_blank" rel="noopener noreferrer">📥 Download</a>
+                </div>
 
-<hr>
-<br><br>
-<h2>🧠 Learning Apps</h2>
+                <div class="app-card" role="listitem">
+                    <div class="app-icon">🏃</div>
+                    <div class="app-name">UserTesting</div>
+                    <p class="app-desc">Get paid for testing websites and apps and providing feedback.</p>
+                    <a href="https://play.google.com/store/apps/details?id=com.userlytics.usertesting" class="app-button" target="_blank" rel="noopener noreferrer">📥 Download</a>
+                </div>
+            </div>
+        </section>
 
-<div class="app-card">
-  <img src="https://via.placeholder.com/50" alt="app icon">>
-  <h3>📘 Programming Apps</h3>
-  <p>Learn coding directly from your phone.</p>
- <a href="https://play.google.com/store/search?q=learn%20programming&c=apps" target="_blank">
-📘 Learn Coding Apps
-</a>
-</div>
-<hr><br><br>
-<p>💬 Want personal help improving or earning? Go to the Help page and chat with me.</p>
-<h3>💬 Need Help Getting Started?</h3>
+        <hr>
 
-<p>I can guide you step-by-step to start earning with your phone.</p>
+        <!-- Help Section -->
+        <section aria-labelledby="conclusion-heading">
+            <h2 id="conclusion-heading">💬 Need Help Getting Started?</h2>
+            <p>These apps are powerful tools to boost your productivity, learn new skills, and start earning money. If you need personalized guidance on which apps to use and how to get started, feel free to reach out.</p>
+            <a href="help.html" class="btn" style="display: inline-block; padding: 12px 25px; background-color: #00ffcc; color: #000; border-radius: 6px; font-weight: bold; margin-top: 15px;">🔥 Get Help Now</a>
+        </section>
+    </main>
 
-<a href="help.html">🔥 Get Help Now</a>
-
+    <footer role="contentinfo">
+        <hr>
+        <p>© 2026 Smart Tech Hub | Built with a phone 📱</p>
+        <p>Your guide to the best apps for Android</p>
+        <p>
+            <a href="index.html">Home</a> • 
+            <a href="about.html">About</a> • 
+            <a href="contact.html">Contact</a>
+        </p>
+    </footer>
 </body>
 </html>

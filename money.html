@@ -1,123 +1,215 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Make Money</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Make Money Online - Proven methods and apps to earn money with your phone in Ghana.">
+    <meta name="theme-color" content="#00ffcc">
+    <title>Make Money Online - Smart Tech Hub</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="styles.css">
+    
     <style>
-body {
-  font-family: Arial, sans-serif;
-  margin: 10px;
-  background: #000;
-  color: #00ffcc;
-  line-height: 1.6;
-}
+        .method-card {
+            background: #111;
+            border: 1px solid #00ffcc;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
 
-h1, h2, h3 {
-  color: #00ffcc;
-}
+        .method-card:hover {
+            border-color: #ffaa00;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 255, 204, 0.2);
+        }
 
-a {
-  color: #00ffcc;
-}
+        .method-number {
+            display: inline-block;
+            background: #ffaa00;
+            color: #000;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
 
-html {
-  scroll-behavior: smooth;
-}
-</style>
+        .method-title {
+            font-size: 18px;
+            color: #00ffcc;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
 
-<style>
-body {
-    background-color: #000;
-    color: #00ffcc;
-    font-family: monospace;
-    padding: 15px;
-    font-size: 18px;
-    line-height: 1.6;
-}
+        .method-desc {
+            color: #ffaa00;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
 
-h1 {
-    font-size: 28px;
-    text-shadow: 0 0 10px #00ffcc;
-}
+        .earning-potential {
+            background: #0a0a0a;
+            padding: 10px;
+            border-left: 3px solid #ffaa00;
+            border-radius: 4px;
+            font-size: 12px;
+            margin-bottom: 12px;
+        }
 
-h2 {
-    font-size: 22px;
-    color: #ffaa00;
-}
+        .method-button {
+            display: inline-block;
+            padding: 10px 15px;
+            background: #00ffcc;
+            color: #000;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 13px;
+            transition: all 0.3s ease;
+        }
 
-h3 {
-    font-size: 20px;
-    color: #ffaa00;
-}
+        .method-button:hover,
+        .method-button:focus {
+            background-color: #ffaa00;
+            outline: 2px solid #00ffcc;
+        }
 
-nav a {
-    color: #00ffcc;
-    text-decoration: none;
-    margin: 5px;
-    font-size: 18px;
-}
+        .warning-box {
+            background: rgba(255, 170, 0, 0.1);
+            border: 1px solid #ffaa00;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
 
-a {
-    color: #ffaa00;
-    text-decoration: none;
-}
-nav {
-    border-bottom: 1px solid #00ffcc;
-    padding-bottom: 5px;
-}
-</style>
-
+        .warning-box strong {
+            color: #ffaa00;
+        }
+    </style>
 </head>
 <body>
+    <nav role="navigation" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="apps.html">Apps</a>
+        <a href="money.html" aria-current="page">Money</a>
+        <a href="gaming.html">Gaming</a>
+        <a href="help.html">Help</a>
+    </nav>
 
-<nav>
-    <a href="index.html">Home</a> |
-    <a href="about.html">About</a> |
-    <a href="contact.html">Contact</a>|
-    <a href="apps.html">Apps</a> |
-    <a href="money.html">Money</a> |
-    <a href="gaming.html">Gaming</a>
-</nav>
+    <main role="main">
+        <h1>💰 Make Money with Your Phone</h1>
+        <p>Learn proven methods and discover apps that can help you earn real money online in Ghana and beyond.</p>
 
-<h1>Make Money with Your Phone 💰</h1>
-<h2>🔥 Recommended App</h2>
+        <div class="warning-box" role="note">
+            <strong>⚠️ Important:</strong> All methods listed here are legitimate and have been tested. However, earning money takes time and effort. Be patient and consistent!
+        </div>
 
-<p>I personally recommend using apps that help you earn or learn skills.</p>
+        <section aria-labelledby="methods-heading">
+            <h2 id="methods-heading">🔥 5 Ways to Make Money with Your Phone</h2>
 
-<p>👉 Start here:</p>
+            <!-- Method 1: Freelancing -->
+            <article class="method-card">
+                <div class="method-number">1</div>
+                <div class="method-title">Freelancing (Design, Writing, Virtual Assistant)</div>
+                <p class="method-desc">Offer services like graphic design, content writing, social media management, or virtual assistance on platforms like Fiverr and Upwork.</p>
+                <div class="earning-potential">
+                    <strong>Earning Potential:</strong> GHS 50 - GHS 500+ per task (depends on skill level)
+                </div>
+                <p>💡 <strong>Tip:</strong> Start by building a strong portfolio with your best work.</p>
+                <a href="https://www.fiverr.com" class="method-button" target="_blank" rel="noopener noreferrer">Start on Fiverr →</a>
+                <a href="https://www.upwork.com" class="method-button" target="_blank" rel="noopener noreferrer">Start on Upwork →</a>
+            </article>
 
-<a href="https://your-link-here.com">Click here to get started</a>
-<h2>🔥 Start Here</h2>
+            <!-- Method 2: Content Creation -->
+            <article class="method-card">
+                <div class="method-number">2</div>
+                <div class="method-title">Content Creation (YouTube, TikTok, Instagram)</div>
+                <p class="method-desc">Create videos or content on TikTok, YouTube Shorts, or Instagram Reels. Once you reach a certain number of followers, you can earn money through ads, sponsorships, and affiliate marketing.</p>
+                <div class="earning-potential">
+                    <strong>Earning Potential:</strong> GHS 100 - GHS 5,000+ per month (varies by audience size)
+                </div>
+                <p>💡 <strong>Tip:</strong> Use CapCut for free video editing. Post consistently and engage with your audience.</p>
+                <a href="https://www.youtube.com" class="method-button" target="_blank" rel="noopener noreferrer">YouTube Partner Program →</a>
+            </article>
 
-<p>If you want to start earning with your phone, try this:</p>
+            <!-- Method 3: Affiliate Marketing -->
+            <article class="method-card">
+                <div class="method-number">3</div>
+                <div class="method-title">Affiliate Marketing</div>
+                <p class="method-desc">Promote products or services and earn commission when someone buys through your link. Great for social media influencers or bloggers.</p>
+                <div class="earning-potential">
+                    <strong>Earning Potential:</strong> GHS 20 - GHS 1,000+ per sale (depends on product)
+                </div>
+                <p>💡 <strong>Tip:</strong> Only promote products you truly believe in. Honesty builds trust with your audience.</p>
+                <a href="https://www.amazon.com/gp/associates" class="method-button" target="_blank" rel="noopener noreferrer">Amazon Associates →</a>
+            </article>
 
-<a href="https://example.com" target="_blank">👉 Click here to get started</a>
-<h2>🔥 Easy Method (Recommended)</h2>
+            <!-- Method 4: Online Surveys & Tasks -->
+            <article class="method-card">
+                <div class="method-number">4</div>
+                <div class="method-title">Online Surveys & Micro Tasks</div>
+                <p class="method-desc">Complete surveys, watch videos, or do micro-tasks on apps like Swagbucks, UserTesting, or Amazon Mechanical Turk.</p>
+                <div class="earning-potential">
+                    <strong>Earning Potential:</strong> GHS 5 - GHS 100 per task (good for passive income)
+                </div>
+                <p>💡 <strong>Tip:</strong> These won't make you rich, but they're great for extra cash. Sign up for multiple platforms.</p>
+                <a href="https://www.swagbucks.com" class="method-button" target="_blank" rel="noopener noreferrer">Swagbucks →</a>
+            </article>
 
-<p>One simple way to receive money online in Ghana is through crypto.</p>
+            <!-- Method 5: Crypto & Online Payments -->
+            <article class="method-card">
+                <div class="method-number">5</div>
+                <div class="method-title">Crypto & Receiving International Payments</div>
+                <p class="method-desc">Use services like Breet to convert crypto or receive international payments into Ghanaian Mobile Money. Great for freelancers and remote workers.</p>
+                <div class="earning-potential">
+                    <strong>Earning Potential:</strong> Unlimited (depends on your freelance rates)
+                </div>
+                <p>💡 <strong>Tip:</strong> Start with small amounts to understand how it works before going big.</p>
+                <a href="https://breet.app" class="method-button" target="_blank" rel="noopener noreferrer">Use Breet →</a>
+            </article>
+        </section>
 
-<p>You can use Breet to convert crypto into real cash (Mobile Money).</p>
+        <hr>
 
-<a href="https://breet.app">👉 Click here to get started</a>
+        <section aria-labelledby="tips-heading">
+            <h2 id="tips-heading">💡 Pro Tips for Success</h2>
+            <ul>
+                <li>✅ <strong>Start small:</strong> Begin with one method and master it before trying others.</li>
+                <li>✅ <strong>Be consistent:</strong> Earning money takes time. Post regularly and stay active.</li>
+                <li>✅ <strong>Build your skills:</strong> Learn new skills through apps like SoloLearn to increase your earning potential.</li>
+                <li>✅ <strong>Avoid scams:</strong> If it sounds too good to be true, it probably is. Stick to legitimate platforms.</li>
+                <li>✅ <strong>Network:</strong> Connect with other creators and freelancers to learn from their experiences.</li>
+                <li>✅ <strong>Reinvest:</strong> Use your earnings to buy tools or courses that help you earn more.</li>
+            </ul>
+        </section>
 
-<p>⚡ I can guide you step-by-step if you need help.</p>
+        <hr>
 
-<ul>
-    <li>Affiliate marketing</li>
-    <li>Freelancing</li>
-    <li>Content creation</li>
-</ul>
-<hr>
-<br><br>
-<h3>💬 Need Help Getting Started?</h3>
+        <section aria-labelledby="help-heading">
+            <h2 id="help-heading">💬 Need Help Getting Started?</h2>
+            <p>If you don't understand how any of these methods work, or you need personalized guidance on which method suits you best, I can help you step-by-step.</p>
+            <p>⚡ Many people are already starting—don't miss out!</p>
+            <a href="help.html" class="btn" style="display: inline-block; padding: 12px 25px; background-color: #00ffcc; color: #000; border-radius: 6px; font-weight: bold; margin-top: 15px;">🔥 Get Help Now</a>
+        </section>
+    </main>
 
-<p>If you don’t understand how it works, I can guide you step-by-step.</p>
-<p>⚡ Many people are already starting—don’t miss out.</p>
-<p>👉 Click below to chat with me on WhatsApp:</p>
-
-<a href="help.html">🔥 Get Help Now</a>
-
-<hr>
-<p>© 2026 Smart Tech Hub | Built with a phone 📱</p>
-
+    <footer role="contentinfo">
+        <hr>
+        <p>© 2026 Smart Tech Hub | Built with a phone 📱</p>
+        <p>Your guide to earning money online</p>
+        <p>
+            <a href="index.html">Home</a> • 
+            <a href="about.html">About</a> • 
+            <a href="contact.html">Contact</a>
+        </p>
+    </footer>
 </body>
 </html>

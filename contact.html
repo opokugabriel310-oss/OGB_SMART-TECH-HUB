@@ -1,94 +1,163 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact Smart Tech Hub - Reach out via WhatsApp or social media for support and guidance.">
+    <meta name="theme-color" content="#00ffcc">
     <title>Contact - Smart Tech Hub</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="styles.css">
+    
     <style>
-body {
-  font-family: Arial, sans-serif;
-  margin: 10px;
-  background: #000;
-  color: #00ffcc;
-  line-height: 1.6;
-}
+        .contact-section {
+            background: #111;
+            border: 1px solid #00ffcc;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
 
-h1, h2, h3 {
-  color: #00ffcc;
-}
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            padding: 15px;
+            background: #0a0a0a;
+            border-left: 3px solid #ffaa00;
+            border-radius: 4px;
+        }
 
-a {
-  color: #00ffcc;
-}
+        .contact-icon {
+            font-size: 32px;
+        }
 
-html {
-  scroll-behavior: smooth;
-}
-</style>
+        .contact-info h3 {
+            margin: 0 0 5px 0;
+            font-size: 16px;
+        }
 
-<style>
-body {
-    background-color: #000;
-    color: #00ffcc;
-    font-family: monospace;
-    padding: 15px;
-    font-size: 18px;
-    line-height: 1.6;
-}
+        .contact-info p {
+            margin: 0;
+            color: #ffaa00;
+            font-size: 13px;
+        }
 
-h1 {
-    font-size: 28px;
-    text-shadow: 0 0 10px #00ffcc;
-}
+        .contact-button {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #00ffcc;
+            color: #000;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
 
-h2 {
-    font-size: 22px;
-    color: #ffaa00;
-}
+        .contact-button:hover,
+        .contact-button:focus {
+            background-color: #ffaa00;
+            outline: 2px solid #00ffcc;
+        }
 
-h3 {
-    font-size: 20px;
-    color: #ffaa00;
-}
-
-nav a {
-    color: #00ffcc;
-    text-decoration: none;
-    margin: 5px;
-    font-size: 18px;
-}
-
-a {
-    color: #ffaa00;
-    text-decoration: none;
-}
-nav {
-    border-bottom: 1px solid #00ffcc;
-    padding-bottom: 5px;
-}
-</style>
+        @media (max-width: 768px) {
+            .contact-method {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
 </head>
 <body>
+    <nav role="navigation" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html" aria-current="page">Contact</a>
+        <a href="apps.html">Apps</a>
+        <a href="money.html">Money</a>
+        <a href="gaming.html">Gaming</a>
+        <a href="help.html">Help</a>
+    </nav>
 
-<nav>
-    <a href="index.html">Home</a> |
-    <a href="about.html">About</a> |
-    <a href="contact.html">Contact</a>|
-    <a href="apps.html">Apps</a> |
-    <a href="money.html">Money</a> |
-    <a href="gaming.html">Gaming</a>|
-    <a href="help.html">help</a>
-</nav>
+    <main role="main">
+        <h1>📞 Contact Me</h1>
+        <p>Reach me via WhatsApp or social media. I'm here to help you get started with apps, gaming, or making money online.</p>
 
-<h1>Contact Me</h1>
-<p>Reach me via WhatsApp or social media.</p> <hr>
+        <section class="contact-section" aria-labelledby="contact-heading">
+            <h2 id="contact-heading">💬 How to Reach Me</h2>
+            
+            <div class="contact-method">
+                <div class="contact-icon">💬</div>
+                <div class="contact-info">
+                    <h3>WhatsApp (Preferred)</h3>
+                    <p>Get immediate responses on WhatsApp. I'm most active here!</p>
+                    <a href="https://wa.me/233542062721?text=Hi%20I%20saw%20your%20website%20and%20need%20help" class="contact-button" target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
+                </div>
+            </div>
 
-<h3>💬 Need Help Getting Started?</h3>
+            <div class="contact-method">
+                <div class="contact-icon">📧</div>
+                <div class="contact-info">
+                    <h3>Email</h3>
+                    <p>opokugabriel310@gmail.com</p>
+                    <p>I'll respond within 24 hours</p>
+                </div>
+            </div>
 
-<p>I can guide you step-by-step to start earning with your phone.</p>
+            <div class="contact-method">
+                <div class="contact-icon">👌</div>
+                <div class="contact-info">
+                    <h3>GitHub</h3>
+                    <p>Follow my projects and contributions</p>
+                    <a href="https://github.com/opokugabriel310-oss" class="contact-button" target="_blank" rel="noopener noreferrer">Visit GitHub</a>
+                </div>
+            </div>
+        </section>
 
-<a href="help.html">🔥 Get Help Now</a>
+        <section aria-labelledby="support-heading">
+            <h2 id="support-heading">🤝 I Can Help You With</h2>
+            <ul>
+                <li>💡 Choosing the right apps for your needs</li>
+                <li>🎮 Improving your gaming skills and performance</li>
+                <li>💰 Finding ways to make money online</li>
+                <li>💻 Building websites and online projects</li>
+                <li>📱 Optimizing your phone for better performance</li>
+                <li>🧠 Learning new tech skills</li>
+            </ul>
+        </section>
 
-<hr>
-<p>© 2026 Smart Tech Hub | Built with a phone 📱</p>
+        <section aria-labelledby="response-heading">
+            <h2 id="response-heading">⏱️ Response Time</h2>
+            <p><strong>WhatsApp:</strong> Usually within 1-2 hours during business hours</p>
+            <p><strong>Email:</strong> Usually within 24 hours</p>
+            <p>I try my best to help everyone, but sometimes it may take a bit longer during busy periods.</p>
+        </section>
 
+        <hr>
+
+        <section aria-labelledby="faq-heading">
+            <h2 id="faq-heading">❓ Frequently Asked Questions</h2>
+            <h3>Q: Do you charge for help?</h3>
+            <p>A: Most consultations are free! I'll guide you step-by-step. For special projects, we can discuss pricing.</p>
+            
+            <h3>Q: What time should I contact you?</h3>
+            <p>A: I'm usually available 9 AM - 9 PM (Ghana Time). Feel free to message anytime—I'll respond when I'm available.</p>
+            
+            <h3>Q: Can you help me make money online?</h3>
+            <p>A: Yes! That's one of my main focuses. I can guide you through proven methods and apps.</p>
+        </section>
+    </main>
+
+    <footer role="contentinfo">
+        <hr>
+        <p>© 2026 Smart Tech Hub | Built with a phone 📱</p>
+        <p>Let's connect and grow together</p>
+        <p>
+            <a href="index.html">Home</a> • 
+            <a href="about.html">About</a> • 
+            <a href="contact.html">Contact</a>
+        </p>
+    </footer>
 </body>
 </html>

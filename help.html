@@ -1,66 +1,241 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Get Help</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Get Help - Contact Smart Tech Hub for personalized guidance on apps, gaming, making money, and web development.">
+    <meta name="theme-color" content="#00ffcc">
+    <title>Get Help - Smart Tech Hub</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="styles.css">
+    
     <style>
-body {
-  font-family: Arial, sans-serif;
-  margin: 10px;
-  background: #000;
-  color: #00ffcc;
-  line-height: 1.6;
-}
+        .help-section {
+            background: #111;
+            border: 1px solid #00ffcc;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
 
-h1, h2, h3 {
-  color: #00ffcc;
-}
+        .help-item {
+            background: #0a0a0a;
+            padding: 15px;
+            margin-bottom: 12px;
+            border-left: 3px solid #ffaa00;
+            border-radius: 4px;
+        }
 
-a {
-  color: #00ffcc;
-}
+        .help-item-title {
+            color: #00ffcc;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
 
-html {
-  scroll-behavior: smooth;
-}
-</style>
+        .help-item-desc {
+            color: #ffaa00;
+            font-size: 14px;
+        }
 
-    <style>
-    body {
-        background-color: #000;
-        color: #00ffcc;
-        font-family: monospace;
-        padding: 15px;
-    }
-    a {
-        color: #ffaa00;
-        text-decoration: none;
-    }
-    nav {
-    border-bottom: 1px solid #00ffcc;
-    padding-bottom: 5px;
-}
+        .cta-button {
+            display: inline-block;
+            padding: 14px 30px;
+            background-color: #00ffcc;
+            color: #000;
+            text-decoration: none;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            font-family: monospace;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+        }
+
+        .cta-button:hover,
+        .cta-button:focus {
+            background-color: #ffaa00;
+            outline: 2px solid #00ffcc;
+            transform: translateY(-2px);
+        }
+
+        .whatsapp-section {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+            border: 2px solid #00ffcc;
+            border-radius: 8px;
+            padding: 25px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .whatsapp-icon {
+            font-size: 64px;
+            margin-bottom: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .help-section {
+                padding: 15px;
+            }
+
+            .cta-button {
+                width: 100%;
+                padding: 12px;
+            }
+        }
     </style>
-
 </head>
 <body>
- <nav><a href="index.html">Home</a> |</nav>
+    <nav role="navigation" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="apps.html">Apps</a>
+        <a href="money.html">Money</a>
+        <a href="gaming.html">Gaming</a>
+        <a href="help.html" aria-current="page">Help</a>
+    </nav>
 
-<h1>💡 Need Help?</h1>
+    <main role="main">
+        <h1>💡 Need Help? I'm Here For You!</h1>
+        <p>I can guide you step-by-step through any challenge you're facing with your phone, apps, gaming, or earning online.</p>
 
-<p>I can help you with:</p>
+        <!-- WhatsApp CTA -->
+        <section class="whatsapp-section" aria-labelledby="whatsapp-heading">
+            <div class="whatsapp-icon">💬</div>
+            <h2 id="whatsapp-heading">Let's Chat on WhatsApp</h2>
+            <p>The fastest way to get personalized help. I'll respond as soon as I can!</p>
+            <a href="https://wa.me/233542062721?text=Hi%20I%20saw%20your%20website%20and%20need%20help" class="cta-button" target="_blank" rel="noopener noreferrer">🔥 Chat on WhatsApp</a>
+        </section>
 
-<ul>
-    <li>Creating a website with your phone</li>
-    <li>Finding apps to make money</li>
-    <li>Improving your phone for gaming</li>
-</ul>
-<p>⚡ I can guide you step-by-step if you need help.</p>
-<p>📲 Contact me on WhatsApp:</p>
+        <!-- Help Categories -->
+        <section class="help-section" aria-labelledby="apps-help-heading">
+            <h2 id="apps-help-heading">📱 Apps & Downloads</h2>
+            <p>Need help choosing or installing apps?</p>
+            <div class="help-item">
+                <div class="help-item-title">✅ Which apps should I download?</div>
+                <div class="help-item-desc">I'll recommend apps based on what you want to do—productivity, gaming, learning, or making money.</div>
+            </div>
+            <div class="help-item">
+                <div class="help-item-title">✅ How do I install apps from Play Store?</div>
+                <div class="help-item-desc">Step-by-step guidance on finding, downloading, and installing apps safely.</div>
+            </div>
+            <div class="help-item">
+                <div class="help-item-title">✅ My phone is running slow—what should I do?</div>
+                <div class="help-item-desc">Learn which apps to remove and how to optimize your phone for better performance.</div>
+            </div>
+        </section>
 
-<a href="https://wa.me/233541234567?text=Hi%20I%20saw%20your%20website%20and%20need%20help">🔥 Chat me on WhatsApp</a>
+        <!-- Gaming Help -->
+        <section class="help-section" aria-labelledby="gaming-help-heading">
+            <h2 id="gaming-help-heading">🎮 Gaming Tips & Improvement</h2>
+            <p>Want to become a better gamer?</p>
+            <div class="help-item">
+                <div class="help-item-title">✅ How can I improve my aim in FPS games?</div>
+                <div class="help-item-desc">Pro tips and strategies to help you become a better shooter. Practice drills included!</div>
+            </div>
+            <div class="help-item">
+                <div class="help-item-title">✅ What's the best sensitivity setting?</div>
+                <div class="help-item-desc">Learn how to find the perfect sensitivity for your game and playstyle.</div>
+            </div>
+            <div class="help-item">
+                <div class="help-item-title">✅ Which game should I play?</div>
+                <div class="help-item-desc">Recommendations based on your interests—FPS, Battle Royale, Racing, or casual games.</div>
+            </div>
+        </section>
 
-<hr>
-<p>© 2026 Smart Tech Hub | Built with a phone 📱</p>
+        <!-- Money Making Help -->
+        <section class="help-section" aria-labelledby="money-help-heading">
+            <h2 id="money-help-heading">💰 Making Money Online</h2>
+            <p>Ready to start earning?</p>
+            <div class="help-item">
+                <div class="help-item-title">✅ What's the easiest way to make money?</div>
+                <div class="help-item-desc">I'll help you find a method that matches your skills and interests.</div>
+            </div>
+            <div class="help-item">
+                <div class="help-item-title">✅ How do I set up Fiverr or Upwork?</div>
+                <div class="help-item-desc">Complete walkthrough on creating a profile, setting prices, and landing your first clients.</div>
+            </div>
+            <div class="help-item">
+                <div class="help-item-title">✅ How do I receive money from abroad?</div>
+                <div class="help-item-desc">Learn about Breet, PayPal, Wise, and other payment methods for international earnings.</div>
+            </div>
+            <div class="help-item">
+                <div class="help-item-title">✅ Can I start with no experience?</div>
+                <div class="help-item-desc">Yes! I'll guide you on building skills and starting your first online job.</div>
+            </div>
+        </section>
 
+        <!-- Web Development Help -->
+        <section class="help-section" aria-labelledby="web-help-heading">
+            <h2 id="web-help-heading">💻 Website & Web Development</h2>
+            <p>Want to build something online?</p>
+            <div class="help-item">
+                <div class="help-item-title">✅ Can I build a website with just my phone?</div>
+                <div class="help-item-desc">Yes! I'll show you free tools and platforms to create a professional website.</div>
+            </div>
+            <div class="help-item">
+                <div class="help-item-title">✅ How much does it cost to build a website?</div>
+                <div class="help-item-desc">Free options and paid options—I'll help you choose the best fit for your budget.</div>
+            </div>
+            <div class="help-item">
+                <div class="help-item-title">✅ Can I make money from my website?</div>
+                <div class="help-item-desc">Learn about ads, affiliate marketing, and selling products through your site.</div>
+            </div>
+        </section>
+
+        <!-- General Help -->
+        <section class="help-section" aria-labelledby="general-help-heading">
+            <h2 id="general-help-heading">🔧 General Tech Support</h2>
+            <p>Having technical issues?</p>
+            <div class="help-item">
+                <div class="help-item-title">✅ My phone is not working properly</div>
+                <div class="help-item-desc">Troubleshooting steps to fix common phone issues.</div>
+            </div>
+            <div class="help-item">
+                <div class="help-item-title">✅ How do I learn new tech skills?</div>
+                <div class="help-item-desc">Recommendations for free courses and learning resources.</div>
+            </div>
+            <div class="help-item">
+                <div class="help-item-title">✅ Something else?</div>
+                <div class="help-item-desc">Just ask! If I can help, I will. If not, I'll point you in the right direction.</div>
+            </div>
+        </section>
+
+        <hr>
+
+        <!-- Response Info -->
+        <section aria-labelledby="info-heading">
+            <h2 id="info-heading">📋 What to Expect</h2>
+            <ul>
+                <li>✅ <strong>Fast Response:</strong> Usually within 1-2 hours on WhatsApp</li>
+                <li>✅ <strong>Step-by-Step Guidance:</strong> I'll explain everything clearly</li>
+                <li>✅ <strong>Honest Advice:</strong> I'll tell you if something won't work and suggest alternatives</li>
+                <li>✅ <strong>Ongoing Support:</strong> Feel free to ask follow-up questions</li>
+                <li>✅ <strong>Most Help is Free:</strong> Basic consultations are completely free!</li>
+            </ul>
+        </section>
+
+        <hr>
+
+        <!-- Final CTA -->
+        <section style="text-align: center; padding: 25px; background: #111; border-radius: 8px; border: 1px solid #00ffcc;">
+            <h2 style="margin-bottom: 15px;">Ready to Get Started?</h2>
+            <p style="margin-bottom: 20px;">Don't wait! Reach out now and let's work together to help you succeed.</p>
+            <a href="https://wa.me/233542062721?text=Hi%20I%20saw%20your%20website%20and%20need%20help" class="cta-button" target="_blank" rel="noopener noreferrer">💬 Chat on WhatsApp Now</a>
+        </section>
+    </main>
+
+    <footer role="contentinfo">
+        <hr>
+        <p>© 2026 Smart Tech Hub | Built with a phone 📱</p>
+        <p>Let's grow together</p>
+        <p>
+            <a href="index.html">Home</a> • 
+            <a href="about.html">About</a> • 
+            <a href="contact.html">Contact</a>
+        </p>
+    </footer>
 </body>
 </html>
