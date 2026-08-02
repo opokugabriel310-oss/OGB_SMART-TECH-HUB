@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Smart Tech Hub - Your guide to apps, gaming, and ways to make money online in Ghana.">
-    <meta name="theme-color" content="#00ffcc">
+    <meta name="theme-color" content="#00d4ff">
     <title>Smart Tech Hub - Apps, Gaming & Money Tips</title>
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="styles.css">
@@ -120,125 +120,6 @@
             transform: translateY(-2px);
         }
 
-        /* Chat Widget */
-        .chat-toggle {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 60px;
-            height: 60px;
-            background-color: #00ffcc;
-            color: #000;
-            border: none;
-            border-radius: 50%;
-            font-size: 24px;
-            cursor: pointer;
-            z-index: 999;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 12px rgba(0, 255, 204, 0.3);
-        }
-
-        .chat-toggle:hover {
-            background-color: #ffaa00;
-            transform: scale(1.1);
-        }
-
-        .chat-toggle:focus {
-            outline: 2px solid #ffaa00;
-            outline-offset: 2px;
-        }
-
-        .chatbox {
-            display: none;
-            position: fixed;
-            bottom: 90px;
-            right: 20px;
-            width: 280px;
-            background: #1a1a1a;
-            color: #00ffcc;
-            border: 2px solid #00ffcc;
-            border-radius: 8px;
-            padding: 15px;
-            z-index: 998;
-            box-shadow: 0 4px 20px rgba(0, 255, 204, 0.2);
-        }
-
-        .chatbox.active {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .chatbox-header {
-            font-weight: bold;
-            margin-bottom: 12px;
-            color: #ffaa00;
-            font-size: 14px;
-        }
-
-        .chat-area {
-            height: 200px;
-            overflow-y: auto;
-            font-size: 13px;
-            margin-bottom: 12px;
-            padding: 10px;
-            background: #0a0a0a;
-            border: 1px solid #00ffcc;
-            border-radius: 4px;
-            line-height: 1.5;
-        }
-
-        .chat-area p {
-            margin-bottom: 8px;
-            word-wrap: break-word;
-        }
-
-        .chat-area strong {
-            color: #ffaa00;
-        }
-
-        .chat-input-group {
-            display: flex;
-            gap: 8px;
-        }
-
-        .chat-input {
-            flex: 1;
-            padding: 8px;
-            background-color: #0a0a0a;
-            border: 1px solid #00ffcc;
-            color: #00ffcc;
-            font-family: monospace;
-            border-radius: 4px;
-            font-size: 12px;
-        }
-
-        .chat-input:focus {
-            outline: none;
-            border-color: #ffaa00;
-            box-shadow: 0 0 8px rgba(0, 255, 204, 0.3);
-        }
-
-        .chat-send {
-            padding: 8px 12px;
-            background-color: #ffaa00;
-            color: #000;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 12px;
-            font-family: monospace;
-            transition: all 0.3s ease;
-        }
-
-        .chat-send:hover,
-        .chat-send:focus {
-            background-color: #00ffcc;
-        }
-
         /* Responsive */
         @media (max-width: 768px) {
             .hero-section {
@@ -258,21 +139,6 @@
                 grid-template-columns: 1fr;
                 gap: 15px;
             }
-
-            .chatbox {
-                width: 100%;
-                bottom: auto;
-                top: 50%;
-                right: auto;
-                left: 50%;
-                transform: translateX(-50%);
-                max-width: 90vw;
-            }
-
-            .chat-toggle {
-                bottom: 20px;
-                right: 20px;
-            }
         }
 
         @media (max-width: 480px) {
@@ -282,11 +148,6 @@
 
             .hero-subtitle {
                 font-size: 14px;
-            }
-
-            .chat-area {
-                height: 150px;
-                font-size: 12px;
             }
         }
     </style>
@@ -299,6 +160,7 @@
         <a href="apps.html">Apps</a>
         <a href="money.html">Money</a>
         <a href="gaming.html">Gaming</a>
+        <a href="tutorials.html">Tutorials</a>
         <a href="help.html">Help</a>
     </nav>
 
@@ -313,12 +175,18 @@
 
         <!-- AI Assistant Section -->
         <section aria-labelledby="ai-heading">
-            <h2 id="ai-heading">🤖 AI Assistant</h2>
-            <p>Need help finding apps, making money online, or learning tech? Ask the AI assistant.</p>
-            <p>⚡ Our AI assistant will guide you instantly when you click.</p>
-            <a href="https://chat.openai.com" class="cta-button">💬 Talk to AI Assistant</a>
-            <p style="margin-top: 15px; font-style: italic;">🚀 Want to discover powerful apps, make money online, and level up your phone?</p>
-            <p>👉 You're in the right place. Start exploring below 👇</p>
+            <h2 id="ai-heading">🤖 Advanced AI Assistant</h2>
+            <p>Meet your intelligent guide! Our new AI assistant uses advanced keyword matching to help you navigate Smart Tech Hub.</p>
+            <p>✨ Ask about:</p>
+            <ul>
+                <li>💰 Making money online & side hustles</li>
+                <li>📱 Discovering the best apps</li>
+                <li>🎮 Gaming tips & optimization</li>
+                <li>📚 Learning to code & web development</li>
+                <li>📞 How to contact us</li>
+                <li>❓ Anything else - I'll help you find it</li>
+            </ul>
+            <p style="margin-top: 15px; font-weight: bold;">👉 Just click the chat bubble in the bottom-right corner to get started!</p>
         </section>
 
         <hr>
@@ -367,6 +235,7 @@
                 <li>✅ Improve your gaming skills with pro tips</li>
                 <li>✅ Learn how to make money online using just your phone</li>
                 <li>✅ Stay updated with new tech trends</li>
+                <li>✅ Access tutorials on coding and web development</li>
             </ul>
             <p><strong>🔥 New posts every day – Stay updated!</strong></p>
             <p>🔔 Bookmark this site and check back daily for new updates!</p>
@@ -375,141 +244,25 @@
         <!-- Help CTA -->
         <section aria-labelledby="help-heading">
             <h2 id="help-heading">💬 Need Help Getting Started?</h2>
-            <p>I can guide you step-by-step to start earning with your phone or improve your gaming skills.</p>
-            <a href="help.html" class="cta-button">🔥 Get Help Now</a>
+            <p>Our AI assistant is ready to guide you step-by-step to start earning with your phone or improve your gaming skills.</p>
+            <a href="help.html" class="cta-button">🔥 Get More Help</a>
         </section>
     </main>
 
-    <!-- Chat Widget -->
-    <button class="chat-toggle" id="chatToggle" aria-label="Open chat assistant" aria-expanded="false" aria-controls="chatbox">💬</button>
-    
-    <div id="chatbox" class="chatbox" role="dialog" aria-labelledby="chat-title">
-        <div class="chatbox-header" id="chat-title">🤖 Smart AI Assistant</div>
-        <div class="chat-area" id="chatArea" aria-live="polite" aria-label="Chat conversation">
-            <p><strong>AI:</strong> Hi 👋 How can I help you today?</p>
-        </div>
-        <div class="chat-input-group">
-            <input 
-                id="userInput" 
-                class="chat-input" 
-                type="text" 
-                placeholder="Ask me anything..." 
-                aria-label="Type your message"
-                autocomplete="off"
-            >
-            <button class="chat-send" id="sendBtn" aria-label="Send message">Send</button>
-        </div>
-    </div>
+    <!-- Advanced AI Chat Widget - Production Ready -->
+    <!-- Load the standalone AI Assistant that includes glassmorphism design, animations, and advanced conversation logic -->
+    <script src="ai-assistant.html"></script>
 
     <footer role="contentinfo">
         <hr>
         <p>© 2026 Smart Tech Hub | Built with a phone 📱</p>
         <p>Your ultimate resource for apps, gaming, and online earning</p>
+        <p>Powered by Advanced AI Assistant</p>
         <p>
             <a href="about.html">About</a> • 
             <a href="contact.html">Contact</a> • 
             <a href="index.html">Home</a>
         </p>
     </footer>
-
-    <script>
-        // Chat Widget Functionality
-        const chatToggle = document.getElementById('chatToggle');
-        const chatbox = document.getElementById('chatbox');
-        const userInput = document.getElementById('userInput');
-        const sendBtn = document.getElementById('sendBtn');
-        const chatArea = document.getElementById('chatArea');
-
-        // Toggle chat
-        chatToggle.addEventListener('click', function() {
-            const isOpen = chatbox.classList.contains('active');
-            chatbox.classList.toggle('active');
-            chatToggle.setAttribute('aria-expanded', !isOpen);
-            
-            if (!isOpen) {
-                userInput.focus();
-            }
-        });
-
-        // Send message function
-        function sendMessage() {
-            const message = userInput.value.toLowerCase().trim();
-            
-            if (message === '') return;
-
-            // Add user message
-            chatArea.innerHTML += '<p><strong>You:</strong> ' + escapeHtml(message) + '</p>';
-            userInput.value = '';
-
-            // Generate AI response
-            let reply = generateAIResponse(message);
-
-            // Add AI response with delay for better UX
-            setTimeout(() => {
-                chatArea.innerHTML += '<p><strong>AI:</strong> ' + reply + '</p>';
-                chatArea.scrollTop = chatArea.scrollHeight;
-            }, 400);
-
-            chatArea.scrollTop = chatArea.scrollHeight;
-        }
-
-        function generateAIResponse(message) {
-            if (message.includes('money') || message.includes('earn') || message.includes('income')) {
-                return '💰 You can learn how to make money on the <a href="money.html" style="color: #ffaa00;">Money page</a>! Check out our proven methods for earning online.';
-            } else if (message.includes('app')) {
-                return '📱 Check the <a href="apps.html" style="color: #ffaa00;">Apps page</a> for the best Android apps! We review top-rated apps daily.';
-            } else if (message.includes('game') || message.includes('gaming')) {
-                return '🎮 Visit the <a href="gaming.html" style="color: #ffaa00;">Gaming page</a> for tips and tricks! Learn pro strategies for FPS, Battle Royale, and more.';
-            } else if (message.includes('help') || message.includes('support') || message.includes('chat')) {
-                return '💼 Click the <a href="help.html" style="color: #ffaa00;">Help page</a> and chat with me directly on WhatsApp for personalized support!';
-            } else if (message.includes('website') || message.includes('build') || message.includes('create')) {
-                return '💻 I can help you build a website! <a href="help.html" style="color: #ffaa00;">Contact me here</a> for web development assistance.';
-            } else if (message.includes('hello') || message.includes('hi') || message.includes('hey')) {
-                return '👋 Hello! I\'m here to help. Ask me about apps, gaming, making money, or anything else!';
-            } else if (message.includes('thank')) {
-                return '😊 You\'re welcome! Feel free to ask more questions. I\'m here to help!';
-            } else {
-                return '🤔 I\'m not sure about that yet. Try asking me about apps, gaming, making money, or visit the Help page for more options!';
-            }
-        }
-
-        function escapeHtml(text) {
-            const map = {
-                '&': '&amp;',
-                '<': '&lt;',
-                '>': '&gt;',
-                '"': '&quot;',
-                "'": '&#039;'
-            };
-            return text.replace(/[&<>"']/g, m => map[m]);
-        }
-
-        // Send message on button click
-        sendBtn.addEventListener('click', sendMessage);
-
-        // Send message on Enter key
-        userInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                sendMessage();
-            }
-        });
-
-        // Close chat when pressing Escape
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && chatbox.classList.contains('active')) {
-                chatbox.classList.remove('active');
-                chatToggle.setAttribute('aria-expanded', 'false');
-                chatToggle.focus();
-            }
-        });
-
-        // Keyboard shortcut: Press "/" to focus search (accessible on gaming page)
-        document.addEventListener('keydown', function(e) {
-            if (e.key === '/' && e.target === document.body) {
-                e.preventDefault();
-                userInput.focus();
-            }
-        });
-    </script>
 </body>
 </html>
