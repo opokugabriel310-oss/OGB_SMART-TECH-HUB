@@ -1,0 +1,1250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Smart Tech Hub AI Assistant - Your intelligent guide to technology, apps, gaming, and more">
+    <title>Smart Tech Hub - AI Assistant</title>
+    
+    <style>
+        /* ============================================
+           RESET & BASE STYLES
+           ============================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #00d4ff;
+            --secondary-color: #0099cc;
+            --dark-bg: #0a0e27;
+            --card-bg: rgba(15, 23, 42, 0.8);
+            --card-border: rgba(0, 212, 255, 0.2);
+            --text-primary: #ffffff;
+            --text-secondary: #a0aec0;
+            --user-bubble: linear-gradient(135deg, #0099cc, #00d4ff);
+            --bot-bubble: rgba(30, 41, 59, 0.9);
+            --shadow: 0 8px 32px rgba(0, 212, 255, 0.1);
+            --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.3);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        /* ============================================
+           CHAT WIDGET CONTAINER
+           ============================================ */
+        .ai-chat-widget {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9999;
+            font-family: inherit;
+            animation: slideIn 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* ============================================
+           FLOATING ACTION BUTTON
+           ============================================ */
+        .chat-fab {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            border: 2px solid var(--primary-color);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition);
+            position: relative;
+            z-index: 1;
+        }
+
+        .chat-fab:hover {
+            transform: scale(1.1);
+            box-shadow: 0 20px 60px rgba(0, 212, 255, 0.4);
+        }
+
+        .chat-fab:active {
+            transform: scale(0.95);
+        }
+
+        .chat-fab svg {
+            width: 28px;
+            height: 28px;
+            fill: white;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+        }
+
+        /* ============================================
+           CHAT WINDOW
+           ============================================ */
+        .chat-window {
+            display: none;
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            width: 100%;
+            max-width: 420px;
+            height: 600px;
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            box-shadow: var(--shadow-lg);
+            flex-direction: column;
+            overflow: hidden;
+            animation: popIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .chat-window.active {
+            display: flex;
+        }
+
+        @keyframes popIn {
+            from {
+                transform: scale(0.95) translateY(10px);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1) translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .chat-window {
+                position: fixed;
+                bottom: 0;
+                right: 0;
+                left: 0;
+                top: 0;
+                max-width: 100%;
+                height: 100vh;
+                border-radius: 0;
+                animation: slideUpMobile 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+
+            @keyframes slideUpMobile {
+                from {
+                    transform: translateY(100%);
+                }
+                to {
+                    transform: translateY(0);
+                }
+            }
+        }
+
+        /* ============================================
+           HEADER
+           ============================================ */
+        .chat-header {
+            padding: 16px 20px;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(0, 153, 204, 0.1));
+            border-bottom: 1px solid var(--card-border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex: 1;
+            cursor: pointer;
+        }
+
+        .header-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+            position: relative;
+            box-shadow: 0 0 16px rgba(0, 212, 255, 0.3);
+        }
+
+        .status-indicator {
+            width: 12px;
+            height: 12px;
+            background: #00d4ff;
+            border-radius: 50%;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            border: 2px solid var(--card-bg);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 0 8px rgba(0, 212, 255, 0.6);
+            }
+            50% {
+                box-shadow: 0 0 16px rgba(0, 212, 255, 0.3);
+            }
+        }
+
+        .header-info h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 0;
+        }
+
+        .header-info p {
+            font-size: 12px;
+            color: var(--primary-color);
+            margin: 2px 0 0 0;
+            font-weight: 500;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .header-btn {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            padding: 6px;
+            border-radius: 6px;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header-btn:hover {
+            color: var(--primary-color);
+            background: rgba(0, 212, 255, 0.1);
+        }
+
+        .header-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* ============================================
+           CHAT MESSAGES CONTAINER
+           ============================================ */
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            scroll-behavior: smooth;
+        }
+
+        /* Custom Scrollbar */
+        .chat-messages::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .chat-messages::-webkit-scrollbar-track {
+            background: rgba(0, 212, 255, 0.05);
+            border-radius: 10px;
+        }
+
+        .chat-messages::-webkit-scrollbar-thumb {
+            background: rgba(0, 212, 255, 0.3);
+            border-radius: 10px;
+        }
+
+        .chat-messages::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 212, 255, 0.5);
+        }
+
+        /* ============================================
+           MESSAGE STYLES
+           ============================================ */
+        .message {
+            display: flex;
+            gap: 8px;
+            animation: messageSlide 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes messageSlide {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .message.user {
+            justify-content: flex-end;
+        }
+
+        .message-avatar {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        .message.bot .message-avatar {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(0, 153, 204, 0.2));
+            color: var(--primary-color);
+        }
+
+        .message.user .message-avatar {
+            background: linear-gradient(135deg, rgba(0, 153, 204, 0.3), rgba(0, 212, 255, 0.3));
+            color: var(--primary-color);
+        }
+
+        .message-content {
+            max-width: 80%;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .message.user .message-content {
+            align-items: flex-end;
+        }
+
+        .message-bubble {
+            padding: 10px 14px;
+            border-radius: 12px;
+            font-size: 14px;
+            line-height: 1.5;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        .message.bot .message-bubble {
+            background: var(--bot-bubble);
+            color: var(--text-primary);
+            border: 1px solid rgba(0, 212, 255, 0.1);
+        }
+
+        .message.user .message-bubble {
+            background: var(--user-bubble);
+            color: white;
+            font-weight: 500;
+        }
+
+        .message-time {
+            font-size: 11px;
+            color: var(--text-secondary);
+            padding: 0 4px;
+        }
+
+        .typing-indicator {
+            display: flex;
+            gap: 4px;
+            padding: 10px 14px;
+            background: var(--bot-bubble);
+            border: 1px solid rgba(0, 212, 255, 0.1);
+            border-radius: 12px;
+            width: fit-content;
+        }
+
+        .typing-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            animation: typing 1.4s infinite;
+        }
+
+        .typing-dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes typing {
+            0%, 60%, 100% {
+                opacity: 0.4;
+                transform: translateY(0);
+            }
+            30% {
+                opacity: 1;
+                transform: translateY(-8px);
+            }
+        }
+
+        /* ============================================
+           INPUT AREA
+           ============================================ */
+        .chat-input-area {
+            padding: 16px;
+            border-top: 1px solid var(--card-border);
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.05), rgba(0, 153, 204, 0.05));
+            display: flex;
+            gap: 8px;
+            align-items: flex-end;
+            flex-shrink: 0;
+        }
+
+        .input-wrapper {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            padding: 8px 12px;
+            transition: var(--transition);
+        }
+
+        .input-wrapper:focus-within {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 12px rgba(0, 212, 255, 0.2);
+        }
+
+        .chat-input {
+            flex: 1;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 14px;
+            outline: none;
+            resize: none;
+            max-height: 100px;
+            font-family: inherit;
+        }
+
+        .chat-input::placeholder {
+            color: var(--text-secondary);
+        }
+
+        .send-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            border: none;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            flex-shrink: 0;
+        }
+
+        .send-btn:hover:not(:disabled) {
+            transform: scale(1.05);
+            box-shadow: 0 8px 24px rgba(0, 212, 255, 0.3);
+        }
+
+        .send-btn:active:not(:disabled) {
+            transform: scale(0.95);
+        }
+
+        .send-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .send-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* ============================================
+           WELCOME MESSAGE
+           ============================================ */
+        .welcome-container {
+            text-align: center;
+            padding: 24px 16px;
+            color: var(--text-secondary);
+        }
+
+        .welcome-icon {
+            font-size: 40px;
+            margin-bottom: 12px;
+        }
+
+        .welcome-container h2 {
+            font-size: 16px;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .welcome-container p {
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        /* ============================================
+           RESPONSIVE DESIGN
+           ============================================ */
+        @media (max-width: 768px) {
+            .chat-window {
+                max-width: 100%;
+                height: 70vh;
+            }
+
+            .message-content {
+                max-width: 90%;
+            }
+
+            .chat-input {
+                font-size: 16px; /* Prevents zoom on iOS */
+            }
+        }
+
+        @media (max-width: 600px) {
+            .ai-chat-widget {
+                bottom: 0;
+                right: 0;
+                left: 0;
+            }
+
+            .chat-fab {
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                width: 56px;
+                height: 56px;
+            }
+
+            .chat-fab.hide-on-mobile {
+                display: none;
+            }
+
+            .chat-window {
+                height: 100vh;
+                max-height: 100vh;
+            }
+
+            .message-content {
+                max-width: 85%;
+            }
+
+            .header-info h3 {
+                font-size: 15px;
+            }
+
+            .chat-messages {
+                padding: 12px;
+                gap: 10px;
+            }
+
+            .chat-input-area {
+                padding: 12px;
+            }
+        }
+
+        /* ============================================
+           UTILITY CLASSES
+           ============================================ */
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+
+        .link-style {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .link-style:hover {
+            text-decoration: underline;
+            color: #00f0ff;
+        }
+    </style>
+
+    <script>
+        /**
+         * ============================================
+         * SMART TECH HUB AI ASSISTANT
+         * Production-Ready Chat Widget
+         * ============================================
+         */
+
+        // ============================================
+        // AI KNOWLEDGE BASE & CONFIGURATION
+        // ============================================
+
+        const AI_CONFIG = {
+            // Welcome messages - randomly selected on first message
+            welcomeMessages: [
+                "Hey there! 👋 I'm your Smart Tech Hub assistant. How can I help you explore our content today?",
+                "Welcome to Smart Tech Hub! I'm here to guide you. What would you like to learn about?",
+                "Hi! 👋 I'm your AI guide to all things tech, gaming, apps, and more. What interests you?",
+                "Greetings! 🤖 Ready to dive into tech? Let me know what you're looking for!"
+            ],
+
+            // Conversation delay (simulated thinking)
+            thinkingDelay: 400,
+            typingDelay: 30,
+
+            // Chat persistence
+            storageKey: 'sth_chat_history'
+        };
+
+        /**
+         * Knowledge Base: Categorized keywords and responses
+         * Each category contains keywords and response variations
+         */
+        const KNOWLEDGE_BASE = {
+            greetings: {
+                keywords: ['hi', 'hello', 'hey', 'good morning', 'good afternoon', 'good evening', 'greetings', 'hiya', 'howdy'],
+                responses: [
+                    "Hey! 👋 Welcome to Smart Tech Hub! I'm here to help you navigate our content on technology, apps, gaming, tutorials, earning opportunities, and so much more. What would you like to explore?",
+                    "Hello! 🎉 Great to see you here at Smart Tech Hub. Whether you're interested in tech trends, gaming, coding tutorials, or mobile apps, I'm here to guide you. What catches your interest?",
+                    "Hi there! 👋 Welcome to Smart Tech Hub - your hub for everything tech-related. I can help you find content on apps, games, tutorials, earning strategies, and more. Where should we start?",
+                    "Greetings! 🤖 Welcome to Smart Tech Hub! I'm your AI assistant, ready to help you discover amazing content about technology, gaming, programming, and more. What would you like to know?"
+                ]
+            },
+
+            money: {
+                keywords: ['money', 'earn', 'earning', 'income', 'cash', 'mobile money', 'momo', 'side hustle', 'business', 'make money', 'revenue', 'monetize'],
+                responses: [
+                    "💰 Great question! You should definitely check out our <a href='money.html' class='link-style'>Money & Income section</a>. There you'll find practical guides on earning opportunities, side hustles, mobile money options, and business strategies to help you generate income online and offline.",
+                    "Looking to earn? 💸 Visit our <a href='money.html' class='link-style'>Money Hub</a> where we cover everything from passive income streams to active side hustles. Learn about mobile money platforms, freelancing, and entrepreneurial opportunities!",
+                    "💵 That's a popular topic! Our <a href='money.html' class='link-style'>Money & Earning Guide</a> has comprehensive resources about income generation, business tips, mobile money solutions like MTN Mobile Money (MoMo), and various revenue streams suited to different skill levels."
+                ]
+            },
+
+            apps: {
+                keywords: ['app', 'apps', 'android', 'application', 'download', 'software', 'ios', 'mobile', 'install'],
+                responses: [
+                    "📱 Awesome! Check out our <a href='apps.html' class='link-style'>Apps section</a> for detailed reviews, download links, and tutorials on the best Android and iOS applications. We cover productivity, entertainment, and utility apps!",
+                    "Need app recommendations? 🎯 Visit our <a href='apps.html' class='link-style'>Apps Hub</a> to discover curated app collections, installation guides, and reviews for both Android and iOS platforms. Find tools that match your needs!",
+                    "📲 Looking for the best apps? Our <a href='apps.html' class='link-style'>Apps section</a> features detailed guides on popular applications, how to download them safely, and comparisons to help you choose the right tools for your phone!"
+                ]
+            },
+
+            gaming: {
+                keywords: ['game', 'games', 'gaming', 'fps', 'lag', 'blood strike', 'call of duty', 'free fire', 'pubg', 'delta force', 'mobile gaming', 'esports', 'gamer', 'play'],
+                responses: [
+                    "🎮 Epic! Our <a href='gaming.html' class='link-style'>Gaming Hub</a> has everything you need - from FPS game reviews to optimization tips, lag fixes, and guides for Blood Strike, Call of Duty, Free Fire, PUBG, Delta Force, and more!",
+                    "Ready to level up? 🏆 Explore our <a href='gaming.html' class='link-style'>Gaming section</a> with strategies, performance optimization guides, and detailed reviews of the hottest games including competitive titles and mobile legends!",
+                    "🎯 Gaming enthusiast? Check out our <a href='gaming.html' class='link-style'>Games & Gaming Guide</a> featuring in-depth game reviews, optimization techniques to reduce lag, device settings, and pro tips for popular titles like PUBG, Free Fire, and more!"
+                ]
+            },
+
+            tutorials: {
+                keywords: ['tutorial', 'learn', 'coding', 'programming', 'html', 'css', 'javascript', 'course', 'education', 'guide', 'how to', 'dev', 'development'],
+                responses: [
+                    "📚 Perfect! Our <a href='tutorials.html' class='link-style'>Tutorials section</a> offers comprehensive guides on HTML, CSS, JavaScript, and modern web development. Learn from beginner basics to advanced techniques!",
+                    "Want to learn to code? 💻 Visit our <a href='tutorials.html' class='link-style'>Tutorials Hub</a> with step-by-step programming guides, web development courses, and educational resources for HTML, CSS, JavaScript, and more!",
+                    "🔧 Great initiative! Explore our <a href='tutorials.html' class='link-style'>Learning Resources</a> featuring detailed tutorials on coding, web development, and programming concepts. Whether you're a beginner or intermediate developer, we've got you covered!"
+                ]
+            },
+
+            contact: {
+                keywords: ['whatsapp', 'phone', 'email', 'contact', 'support', 'help', 'reach out', 'message', 'call', 'communication', 'connect'],
+                responses: [
+                    "📞 Need to get in touch? Visit our <a href='contact.html' class='link-style'>Contact page</a> to reach out via WhatsApp, email, or phone. We're here to help with any questions or feedback!",
+                    "Want to connect? 💬 Head over to our <a href='contact.html' class='link-style'>Contact & Support section</a> where you can find all our communication channels including WhatsApp, email, and direct messaging options!",
+                    "📧 Feel free to reach out! Our <a href='contact.html' class='link-style'>Contact page</a> has multiple ways to connect - WhatsApp for quick chats, email for detailed messages, and a contact form for general inquiries!"
+                ]
+            },
+
+            about: {
+                keywords: ['who are you', 'about', 'company', 'smart tech hub', 'mission', 'story', 'team', 'about us', 'information'],
+                responses: [
+                    "🌟 Great question! Learn more about Smart Tech Hub on our <a href='about.html' class='link-style'>About page</a>. Discover our mission, team, and the journey behind creating the ultimate tech resource hub!",
+                    "Curious about us? 🤔 Visit our <a href='about.html' class='link-style'>About Smart Tech Hub</a> page to learn our story, mission statement, team information, and why we're passionate about technology!",
+                    "📖 Want to know our story? Check out our <a href='about.html' class='link-style'>About Us page</a> for comprehensive information about Smart Tech Hub, our vision, values, and the dedicated team behind this platform!"
+                ]
+            },
+
+            help: {
+                keywords: [], // Fallback - no specific keywords
+                responses: [
+                    "I couldn't fully understand your request, but no worries! Visit our <a href='help.html' class='link-style'>Help Center</a> for comprehensive FAQs, troubleshooting guides, and more information. Or feel free to ask me again in a different way! 😊",
+                    "Hmm, I'm not quite sure about that one. Our <a href='help.html' class='link-style'>Help & FAQ page</a> might have the answers you're looking for. You can also try rephrasing your question, and I'll do my best to assist! 🤝",
+                    "I didn't quite catch that. Let me suggest checking our <a href='help.html' class='link-style'>Help Center</a> for more information. If you have other questions, I'm all ears! 👂"
+                ]
+            }
+        };
+
+        // ============================================
+        // UTILITY FUNCTIONS
+        // ============================================
+
+        /**
+         * Format current time as HH:MM
+         */
+        function getCurrentTime() {
+            const now = new Date();
+            return now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false });
+        }
+
+        /**
+         * Extract first word of user message for avatar
+         */
+        function getInitials(text) {
+            const words = text.trim().split(' ');
+            return words[0].charAt(0).toUpperCase();
+        }
+
+        /**
+         * Normalize text for keyword matching
+         */
+        function normalizeText(text) {
+            return text.toLowerCase().trim().replace(/[^\w\s]/g, '');
+        }
+
+        /**
+         * Check if user message contains keywords from a category
+         */
+        function matchesKeywords(userMessage, keywords) {
+            if (keywords.length === 0) return false;
+            const normalizedMessage = normalizeText(userMessage);
+            return keywords.some(keyword => 
+                normalizedMessage.includes(normalizeText(keyword))
+            );
+        }
+
+        /**
+         * Get random element from array
+         */
+        function getRandomElement(array) {
+            return array[Math.floor(Math.random() * array.length)];
+        }
+
+        /**
+         * Get AI response based on user message
+         */
+        function generateAIResponse(userMessage) {
+            // Check each category for keyword matches
+            for (const [category, data] of Object.entries(KNOWLEDGE_BASE)) {
+                if (matchesKeywords(userMessage, data.keywords)) {
+                    return getRandomElement(data.responses);
+                }
+            }
+
+            // Fallback to help category
+            return getRandomElement(KNOWLEDGE_BASE.help.responses);
+        }
+
+        /**
+         * Load chat history from localStorage
+         */
+        function loadChatHistory() {
+            const stored = localStorage.getItem(AI_CONFIG.storageKey);
+            return stored ? JSON.parse(stored) : [];
+        }
+
+        /**
+         * Save chat history to localStorage
+         */
+        function saveChatHistory(messages) {
+            localStorage.setItem(AI_CONFIG.storageKey, JSON.stringify(messages));
+        }
+
+        /**
+         * Format message for storage
+         */
+        function createMessage(type, content) {
+            return {
+                type: type, // 'user' or 'bot'
+                content: content,
+                timestamp: new Date().toISOString()
+            };
+        }
+
+        // ============================================
+        // DOM MANIPULATION FUNCTIONS
+        // ============================================
+
+        /**
+         * Create message element with avatar, bubble, and timestamp
+         */
+        function createMessageElement(message) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${message.type}`;
+            messageDiv.setAttribute('role', 'article');
+            messageDiv.setAttribute('aria-label', `${message.type === 'user' ? 'Your' : 'Assistant'} message`);
+
+            const time = new Date(message.timestamp);
+            const timeStr = time.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false });
+
+            const avatar = document.createElement('div');
+            avatar.className = 'message-avatar';
+            avatar.textContent = message.type === 'user' ? '👤' : '🤖';
+
+            const content = document.createElement('div');
+            content.className = 'message-content';
+
+            const bubble = document.createElement('div');
+            bubble.className = 'message-bubble';
+            bubble.innerHTML = message.content;
+
+            const timeElement = document.createElement('div');
+            timeElement.className = 'message-time';
+            timeElement.textContent = timeStr;
+
+            if (message.type === 'user') {
+                content.appendChild(bubble);
+                content.appendChild(timeElement);
+                messageDiv.appendChild(content);
+                messageDiv.appendChild(avatar);
+            } else {
+                content.appendChild(bubble);
+                content.appendChild(timeElement);
+                messageDiv.appendChild(avatar);
+                messageDiv.appendChild(content);
+            }
+
+            return messageDiv;
+        }
+
+        /**
+         * Create typing indicator animation
+         */
+        function createTypingIndicator() {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message bot typing-message';
+            messageDiv.setAttribute('role', 'status');
+            messageDiv.setAttribute('aria-label', 'Assistant is typing');
+
+            const avatar = document.createElement('div');
+            avatar.className = 'message-avatar';
+            avatar.textContent = '🤖';
+
+            const content = document.createElement('div');
+            content.className = 'message-content';
+
+            const typing = document.createElement('div');
+            typing.className = 'typing-indicator';
+            typing.innerHTML = '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
+
+            content.appendChild(typing);
+            messageDiv.appendChild(avatar);
+            messageDiv.appendChild(content);
+
+            return messageDiv;
+        }
+
+        /**
+         * Scroll to bottom of messages
+         */
+        function scrollToBottom(messagesContainer) {
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        /**
+         * Add welcome message on first load
+         */
+        function addWelcomeMessage(messagesContainer, chatHistory) {
+            if (chatHistory.length === 0) {
+                const welcomeMsg = getRandomElement(AI_CONFIG.welcomeMessages);
+                const message = createMessage('bot', welcomeMsg);
+                chatHistory.push(message);
+                const messageEl = createMessageElement(message);
+                messagesContainer.appendChild(messageEl);
+                saveChatHistory(chatHistory);
+                scrollToBottom(messagesContainer);
+            }
+        }
+
+        // ============================================
+        // MAIN CHAT WIDGET CLASS
+        // ============================================
+
+        class SmartTechHubAI {
+            constructor() {
+                this.isOpen = false;
+                this.isTyping = false;
+                this.chatHistory = loadChatHistory();
+                this.init();
+            }
+
+            init() {
+                this.createWidget();
+                this.setupEventListeners();
+                this.restoreChat();
+            }
+
+            /**
+             * Create the complete chat widget HTML
+             */
+            createWidget() {
+                const widget = document.createElement('div');
+                widget.className = 'ai-chat-widget';
+                widget.setAttribute('lang', 'en');
+
+                widget.innerHTML = `
+                    <!-- Floating Action Button -->
+                    <button class="chat-fab" id="chatFab" aria-label="Open AI Assistant" aria-expanded="false">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                    </button>
+
+                    <!-- Chat Window -->
+                    <div class="chat-window" id="chatWindow" role="dialog" aria-labelledby="chatTitle" aria-hidden="true">
+                        <!-- Header -->
+                        <div class="chat-header">
+                            <div class="header-left" id="headerLeft">
+                                <div class="header-avatar">
+                                    🤖
+                                    <div class="status-indicator"></div>
+                                </div>
+                                <div class="header-info">
+                                    <h3 id="chatTitle">AI Assistant</h3>
+                                    <p>Smart Tech Hub</p>
+                                </div>
+                            </div>
+                            <div class="header-actions">
+                                <button class="header-btn" id="clearBtn" title="Clear chat" aria-label="Clear chat history">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="3 6 5 6 21 6"></polyline>
+                                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                                        <line x1="10" y1="11" x2="10" y2="17"></line>
+                                        <line x1="14" y1="11" x2="14" y2="17"></line>
+                                    </svg>
+                                </button>
+                                <button class="header-btn" id="collapseBtn" title="Close chat" aria-label="Close chat window">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="18 15 12 9 6 15"></polyline>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Messages Container -->
+                        <div class="chat-messages" id="chatMessages" role="log" aria-live="polite" aria-label="Chat messages"></div>
+
+                        <!-- Input Area -->
+                        <div class="chat-input-area">
+                            <div class="input-wrapper">
+                                <input 
+                                    type="text" 
+                                    class="chat-input" 
+                                    id="chatInput" 
+                                    placeholder="Ask me anything... 💬"
+                                    aria-label="Message input"
+                                    autocomplete="off"
+                                >
+                            </div>
+                            <button class="send-btn" id="sendBtn" disabled aria-label="Send message">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M16.6915026,12.4744748 L3.50612381,13.2599618 C3.19218622,13.2599618 3.03521743,13.4170592 3.03521743,13.5741566 L1.15159189,20.0151496 C0.8376543,20.8006365 0.99,21.89 1.77946707,22.52 C2.41,22.99 3.50612381,23.1 4.13399899,22.8429026 L21.714504,14.0454487 C22.6563168,13.5741566 23.1272231,12.6315722 22.9702544,11.6889879 L4.13399899,1.16884705 C3.34915502,0.9117496 2.40734225,1.02381014 1.77946707,1.4950926 C0.994623095,2.1319805 0.837654326,3.22133327 1.15159189,3.99999026 L3.03521743,10.4409833 C3.03521743,10.5980807 3.19218622,10.7551781 3.50612381,10.7551781 L16.6915026,11.5406631 C16.6915026,11.5406631 17.1624089,11.5406631 17.1624089,12.0119452 C17.1624089,12.4832274 16.6915026,12.4744748 16.6915026,12.4744748 Z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                `;
+
+                document.body.appendChild(widget);
+            }
+
+            /**
+             * Setup all event listeners
+             */
+            setupEventListeners() {
+                const fab = document.getElementById('chatFab');
+                const chatWindow = document.getElementById('chatWindow');
+                const collapseBtn = document.getElementById('collapseBtn');
+                const clearBtn = document.getElementById('clearBtn');
+                const chatInput = document.getElementById('chatInput');
+                const sendBtn = document.getElementById('sendBtn');
+                const messagesContainer = document.getElementById('chatMessages');
+                const headerLeft = document.getElementById('headerLeft');
+
+                // FAB - Open chat
+                fab.addEventListener('click', () => this.toggleChat());
+
+                // Header - Toggle on mobile
+                headerLeft.addEventListener('click', () => {
+                    if (window.innerWidth < 600) {
+                        this.toggleChat();
+                    }
+                });
+
+                // Close button
+                collapseBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    this.closeChat();
+                });
+
+                // Clear chat
+                clearBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    if (confirm('Are you sure you want to clear all messages?')) {
+                        this.clearChat();
+                    }
+                });
+
+                // Input management
+                chatInput.addEventListener('input', (e) => {
+                    this.updateSendButton();
+                    this.autoResizeInput(e.target);
+                });
+
+                chatInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter' && !e.shiftKey) {
+                        e.preventDefault();
+                        this.sendMessage();
+                    }
+                });
+
+                // Send button
+                sendBtn.addEventListener('click', () => this.sendMessage());
+
+                // Focus input when window opens
+                document.getElementById('chatWindow').addEventListener('transitionend', () => {
+                    if (this.isOpen) {
+                        chatInput.focus();
+                    }
+                });
+
+                // Handle window resize
+                window.addEventListener('resize', () => {
+                    this.handleResponsive();
+                });
+            }
+
+            /**
+             * Toggle chat open/closed
+             */
+            toggleChat() {
+                if (this.isOpen) {
+                    this.closeChat();
+                } else {
+                    this.openChat();
+                }
+            }
+
+            /**
+             * Open chat
+             */
+            openChat() {
+                const chatWindow = document.getElementById('chatWindow');
+                const fab = document.getElementById('chatFab');
+
+                this.isOpen = true;
+                chatWindow.classList.add('active');
+                fab.setAttribute('aria-expanded', 'true');
+                document.getElementById('chatWindow').setAttribute('aria-hidden', 'false');
+
+                setTimeout(() => {
+                    document.getElementById('chatInput').focus();
+                    scrollToBottom(document.getElementById('chatMessages'));
+                }, 300);
+            }
+
+            /**
+             * Close chat
+             */
+            closeChat() {
+                const chatWindow = document.getElementById('chatWindow');
+                const fab = document.getElementById('chatFab');
+
+                this.isOpen = false;
+                chatWindow.classList.remove('active');
+                fab.setAttribute('aria-expanded', 'false');
+                document.getElementById('chatWindow').setAttribute('aria-hidden', 'true');
+            }
+
+            /**
+             * Send user message
+             */
+            async sendMessage() {
+                const chatInput = document.getElementById('chatInput');
+                const sendBtn = document.getElementById('sendBtn');
+                const messagesContainer = document.getElementById('chatMessages');
+
+                const message = chatInput.value.trim();
+
+                if (!message || this.isTyping) return;
+
+                // Disable input during processing
+                this.isTyping = true;
+                sendBtn.disabled = true;
+                chatInput.value = '';
+                chatInput.style.height = 'auto';
+
+                // Add user message
+                const userMessage = createMessage('user', this.escapeHtml(message));
+                this.chatHistory.push(userMessage);
+                const userEl = createMessageElement(userMessage);
+                messagesContainer.appendChild(userEl);
+                scrollToBottom(messagesContainer);
+
+                // Simulate thinking delay
+                await this.delay(AI_CONFIG.thinkingDelay);
+
+                // Add typing indicator
+                const typingEl = createTypingIndicator();
+                messagesContainer.appendChild(typingEl);
+                scrollToBottom(messagesContainer);
+
+                // Generate response
+                await this.delay(Math.random() * 800 + 400);
+
+                const responseText = generateAIResponse(message);
+                const botMessage = createMessage('bot', responseText);
+                this.chatHistory.push(botMessage);
+
+                // Remove typing indicator and add response
+                typingEl.remove();
+                const botEl = createMessageElement(botMessage);
+                messagesContainer.appendChild(botEl);
+                scrollToBottom(messagesContainer);
+
+                // Save to localStorage
+                saveChatHistory(this.chatHistory);
+
+                // Re-enable input
+                this.isTyping = false;
+                this.updateSendButton();
+                chatInput.focus();
+            }
+
+            /**
+             * Clear chat history
+             */
+            clearChat() {
+                this.chatHistory = [];
+                saveChatHistory(this.chatHistory);
+                document.getElementById('chatMessages').innerHTML = '';
+                addWelcomeMessage(document.getElementById('chatMessages'), this.chatHistory);
+                document.getElementById('chatInput').focus();
+            }
+
+            /**
+             * Restore chat from localStorage
+             */
+            restoreChat() {
+                const messagesContainer = document.getElementById('chatMessages');
+
+                if (this.chatHistory.length === 0) {
+                    addWelcomeMessage(messagesContainer, this.chatHistory);
+                } else {
+                    this.chatHistory.forEach(msg => {
+                        const el = createMessageElement(msg);
+                        messagesContainer.appendChild(el);
+                    });
+                }
+
+                scrollToBottom(messagesContainer);
+            }
+
+            /**
+             * Update send button state
+             */
+            updateSendButton() {
+                const chatInput = document.getElementById('chatInput');
+                const sendBtn = document.getElementById('sendBtn');
+                const hasText = chatInput.value.trim().length > 0;
+                sendBtn.disabled = !hasText || this.isTyping;
+            }
+
+            /**
+             * Auto-resize textarea
+             */
+            autoResizeInput(element) {
+                element.style.height = 'auto';
+                element.style.height = Math.min(element.scrollHeight, 100) + 'px';
+            }
+
+            /**
+             * Handle responsive behavior
+             */
+            handleResponsive() {
+                const fab = document.getElementById('chatFab');
+                if (window.innerWidth < 600 && this.isOpen) {
+                    // On mobile, chat takes full screen
+                    fab.style.display = 'none';
+                } else if (window.innerWidth >= 600) {
+                    fab.style.display = 'flex';
+                }
+            }
+
+            /**
+             * Utility: Escape HTML to prevent XSS
+             */
+            escapeHtml(text) {
+                const div = document.createElement('div');
+                div.textContent = text;
+                return div.innerHTML;
+            }
+
+            /**
+             * Utility: Delay helper
+             */
+            delay(ms) {
+                return new Promise(resolve => setTimeout(resolve, ms));
+            }
+        }
+
+        // ============================================
+        // INITIALIZATION
+        // ============================================
+
+        /**
+         * Initialize chat widget when DOM is ready
+         */
+        document.addEventListener('DOMContentLoaded', () => {
+            new SmartTechHubAI();
+        });
+
+        /**
+         * Fallback initialization if DOM is already loaded
+         */
+        if (document.readyState === 'interactive' || document.readyState === 'complete') {
+            new SmartTechHubAI();
+        }
+    </script>
+</head>
+<body>
+    <!-- This file is a standalone chat widget -->
+    <!-- Include this file in your HTML pages using: -->
+    <!-- <script src="ai-assistant.html"></script> -->
+    <!-- Or embed the entire content in your main HTML file -->
+</body>
+</html>
